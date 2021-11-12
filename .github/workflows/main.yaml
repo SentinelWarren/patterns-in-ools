@@ -1,0 +1,57 @@
+name: CI run
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: update packages
+      run: sudo apt update
+
+    # # set up scala
+    # - name: install scala
+    #   run: sudo apt install scala
+
+    # # set up java
+    # - name : install java 
+    #   run: sudo apt install default-jdk  
+
+    # # set up Dart
+    # - name : install dart
+    #   run : |
+    #     sudo apt-get install apt-transport-https
+    #     sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+    #     sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+    #     sudo apt-get update
+    #     sudo apt-get install dart
+
+    # # set up TypeScript
+    # - name : install TypeScript
+    #   run : npm install typescript
+      
+    # # set up HolyC
+    # - name : install HolyC
+    #   run : |
+    #     curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
+    #     cargo install --git https://github.com/r-ba/hcc
+
+    # #set up Swift
+    # - name : install Swift 
+    #   run : sudo apt install swift
+
+    # # set up Kotlin
+    # - name : install Kotlin
+    #   run : sudo snap install --classic kotlin
+
+    # Runs the main script script
+    - name: Run script
+      run: ./run.sh
