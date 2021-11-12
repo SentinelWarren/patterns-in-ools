@@ -1,2 +1,2 @@
-# Design Petterns in various Languages
+# Design Patterns in various Languages
 
