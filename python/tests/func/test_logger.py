@@ -1,8 +1,9 @@
-from patterns.singleton import Logger
+from patterns import Logger
 
 
-def test_logger(tmpdir):
-    logger = Logger(tmpdir.mkdir("temp").join("class_logger.log"))
+def test_logger(tmpdir_factory):
+    tmp = tmpdir_factory.mktemp("func")
+    logger = Logger(tmp.join("class_logger.log"))
 
     logger.critical("This is a critical message")
     logger.error("This is an error message")
