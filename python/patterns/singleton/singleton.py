@@ -1,61 +1,24 @@
-from typing import Any, Dict
+from typing import Dict
 
 
 class Singleton(type):
-    _instances = dict()
+    _instances: Dict[str, object] = dict()
 
-    def __call__(cls, *args: Any, **kwargs: Any) -> Dict[Any, str]:
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton,
+    def __call__(cls, *args: object, **kwargs: object) -> object:
+        if str(cls) not in cls._instances:
+            cls._instances[str(cls)] = super(Singleton,
             cls).__call__(*args, **kwargs)
 
-        return cls._instances[cls]
+        return cls._instances[str(cls)]
 
 
-class Logger(metaclass=Singleton):
-    def __init__(self, file_name: str) -> None:
-        self.file_name = file_name
-
-    def _write_log(self, level: str, msg: str) -> None:
-        with open(self.file_name, "a") as log_file:
-            log_file.write(f"[{level}] {msg}\n")
-
-    def critical(self, msg: str) -> None:
-        self._write_log("CRITICAL", msg)
-    
-    def error(self, msg: str) -> None:
-        self._write_log("ERROR", msg)
-
-    def warn(self, msg: str) -> None:
-        self._write_log("WARNING", msg)
-
-    def info(self, msg: str) -> None:
-        self._write_log("INFO", msg)
-
-    def debug(self, msg: str) -> None:
-        self._write_log("DEBUG", msg)
-
-    def read(self) -> str:
-        with open(self.file_name, "r") as log_file:
-            return log_file.read()
+class FooTone(metaclass=Singleton):
+    def __init__(self, arg: str) -> None:
+        self.attribute = arg
 
     def __repr__(self) -> str:
         return (
-            f"{self.__class__.__name__}("
-            f"{self.file_name!r}) "
-            f"at {hex(id(self))}"
+            f"<class {self.__class__.__name__}("
+            f"{self.attribute!r}) "
+            f"at {hex(id(self))}>"
         )
-
-
-
-if __name__ == '__main__':
-    print(len(Singleton._instances))
-
-    logger1 = Logger("class_logger.log")
-    logger2 = Logger("tst.txt")
-    print(logger1 is logger2)
-    
-    logger2.file_name = "test/another_logger.log"
-    print(logger1.file_name is logger2.file_name)
-
-    print(len(Singleton._instances))
