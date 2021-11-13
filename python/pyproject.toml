@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "patterns"
-version = "0.1.0"
-description = ""
+version = "0.1.1"
+description = "Practical Design Patterns in Python"
 authors = ["SentinelWarren <warrenkalolo@gmail.com>"]
 
 [tool.poetry.dependencies]
