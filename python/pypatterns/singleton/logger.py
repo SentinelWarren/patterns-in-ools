@@ -1,4 +1,4 @@
-from patterns import Singleton
+from pypatterns import Singleton
 from typing import Any
 
 

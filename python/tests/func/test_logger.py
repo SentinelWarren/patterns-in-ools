@@ -1,4 +1,4 @@
-from patterns import Logger
+from pypatterns import Logger
 
 
 def test_methods_return(tmpdir_factory):

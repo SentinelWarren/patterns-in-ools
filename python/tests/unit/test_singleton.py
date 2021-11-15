@@ -1,8 +1,8 @@
-from patterns import Singleton, FooTone, Logger
+from pypatterns import Singleton, FooTone, Logger
 
 
-foo = "<class 'patterns.singleton.singleton.FooTone'>"
-logger = "<class 'patterns.singleton.logger.Logger'>"
+foo = "<class 'pypatterns.singleton.singleton.FooTone'>"
+logger = "<class 'pypatterns.singleton.logger.Logger'>"
 
 def instantiate_foo(arg):
     return FooTone(arg)

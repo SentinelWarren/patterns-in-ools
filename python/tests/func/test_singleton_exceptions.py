@@ -1,4 +1,4 @@
-from patterns import Singleton
+from pypatterns import Singleton
 from pytest import raises
 
 def test_instances_raises():
