@@ -1,4 +1,4 @@
-"""Patterns docs
+"""pypatterns doc
 
 Changelog
 ---------

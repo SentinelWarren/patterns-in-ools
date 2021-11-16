@@ -4,12 +4,24 @@ from setuptools import find_packages, setup
 
 
 def get_info(info_name):
+    p = "['\"]([^'\"]+)['\"]"
+
     with open(os.path.join('pypatterns', '__init__.py')) as f:
         init = f.read()
-    if info_name == '__doc__':
-        return re.search(f"['\"]([^'\"]+)['\"]", init).group(1)
-    else:
-        return re.search(f"{info_name} = ['\"]([^'\"]+)['\"]", init).group(1)
+    
+    # p2 = f"another pattern"
+    # other_opts = []
+    # if info_name == '__doc__':
+    #     return re.search(p, init).group(1)
+    # elif info_name in other_opts:
+    #     return re.search(f"{info_name} = {p2}", init).group(1)
+    # else:
+    #     return re.search(f"{info_name} = {p}", init).group(1)
+
+    return(
+        re.search(p, init).group(1) if info_name == '__doc__' 
+        else re.search(f"{info_name} = {p}", init).group(1)
+    )
 
 setup(
     name='pypatterns',
@@ -20,12 +32,7 @@ setup(
     author_email=get_info('__author_email__'),
     url=get_info('__url__'),
     license=get_info('__license__'),
-    platforms='any',
-    
-    packages=find_packages(where='pypatterns'),
-    package_dir={'': 'pypatterns'},
-    package_data={'': ['LICENSE']},
-    python_requires=">=3.6",
+    platforms=['Any'],
     classifiers=[
     'Development Status :: 2 - Alpha',
     'Intended Audience :: Developers',
@@ -37,4 +44,9 @@ setup(
     'Programming Language :: Python :: 3.9',
     'Topic :: GOF:: Design Patterns :: Software Development',
     ],
+    python_requires=">=3.6",
+    packages=find_packages(where='pypatterns'),
+    package_dir={'': 'pypatterns'},
+    #package_data={'': ['LICENSE']},
 )
+configurations =
