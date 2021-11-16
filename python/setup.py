@@ -49,4 +49,3 @@ setup(
     package_dir={'': 'pypatterns'},
     #package_data={'': ['LICENSE']},
 )
-configurations =

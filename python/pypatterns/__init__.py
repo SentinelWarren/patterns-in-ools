@@ -22,8 +22,8 @@ __all__ = (
     'RTS',
 )
 
-from .singleton.singleton import Singleton, FooTone
-from .singleton.logger import Logger
+from .creational.singleton import Singleton, FooTone
+from .examples.logger import Logger
 
-from .prototype.prototype import Prototype, ConcreteProto
-from .prototype.rts import RTS
+from .creational.prototype import Prototype, ConcreteProto
+from .examples.rts import RTS
