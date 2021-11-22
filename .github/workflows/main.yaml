@@ -44,12 +44,6 @@ jobs:
     # # set up TypeScript
     # - name : install TypeScript
     #   run : npm install typescript
-      
-    # # set up HolyC
-    # - name : install HolyC
-    #   run : |
-    #     curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
-    #     cargo install --git https://github.com/r-ba/hcc
 
     # #set up Swift
     # - name : install Swift 
