@@ -1,53 +1,63 @@
-from pypatterns import Singleton, FooTone, Logger
+"""Testing singleton module"""
+from pypatterns import singleton, logging
 
 
-foo = "<class 'pypatterns.creational.singleton.FooTone'>"
-logger = "<class 'pypatterns.examples.logger.Logger'>"
+singleton_instances = singleton.SingletonMeta.get_instances()
+FOO_CLASS = "<class 'pypatterns.creational.singleton.FooTone'>"
+LOGGER_CLASS = "<class 'pypatterns.examples.creational.logging.Logger'>"
 
 def instantiate_foo(arg):
-    return FooTone(arg)
+    """Instantiate singleton.FooTone class"""
+    return singleton.FooTone(arg)
 
 def instantiate_logger(arg):
-    return Logger(arg)
+    """Instantiate logging.Logger class"""
+    return logging.Logger(arg)
 
 def delete_instance(name):
-    if name in Singleton._instances.keys():
-        del Singleton._instances[name]
+    """Delete an instance in singleton.SingletonMeta"""
+    if name in singleton_instances:
+        del singleton_instances[name]
 
 def test_global_state():
+    """Test Singleton global state"""
     foo1 = instantiate_foo("some_attr")
     foo2 = instantiate_foo("diff_attr")
-    assert foo1 == foo2
+    assert foo1 is foo2
     assert foo1.attribute == foo2.attribute
 
     foo2.attribute = "another_attr"
     assert foo1.attribute == foo2.attribute
 
 def test_empty_instances():
-    Singleton._instances.clear()
-    
-    assert len(Singleton._instances) == 0
-    assert logger, foo not in Singleton._instances
+    """Test empty singleton.Singleton._instances"""
+    singleton_instances.clear()
 
-def test_all_instances():
-    if logger not in Singleton._instances:
+    assert len(singleton_instances) == 0
+    assert LOGGER_CLASS, FOO_CLASS not in singleton_instances
+
+def test_all_added_instances():
+    """Test all added instances in singleton.Singleton._instances"""
+    if LOGGER_CLASS not in singleton_instances:
         instantiate_logger("file.log")
-    
-    if foo not in Singleton._instances:
+
+    if FOO_CLASS not in singleton_instances:
         instantiate_foo("some_attr")
-    
-    assert len(Singleton._instances) == 2
-    assert foo, logger in Singleton._instances
+
+    assert len(singleton_instances) == 2
+    assert FOO_CLASS, LOGGER_CLASS in singleton_instances
 
 def test_logger_instance():
-    delete_instance(foo)
-    
-    assert len(Singleton._instances) == 1
-    assert logger in Singleton._instances
+    """Test only logging.Logger instance in singleton.Singleton._instances"""
+    delete_instance(FOO_CLASS)
+
+    assert len(singleton_instances) == 1
+    assert LOGGER_CLASS in singleton_instances
 
 def test_foo_instance():
+    """Test only singleton.FooTone instance in singleton.Singleton._instances"""
     instantiate_foo("some_attr")
-    delete_instance(logger)
-    
-    assert len(Singleton._instances) == 1
-    assert foo in Singleton._instances
+    delete_instance(LOGGER_CLASS)
+
+    assert len(singleton_instances) == 1
+    assert FOO_CLASS in singleton_instances

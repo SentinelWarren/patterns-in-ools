@@ -1,30 +1,37 @@
-from pypatterns import ConcreteProto
 from collections import namedtuple
+from pypatterns import prototype
 
 
-def test_prototype():
+def test_ConcreteProto():
+    proto = prototype.ConcreteProto([1,2,3,4])
+    proto2 = proto.clone()
+    proto3 = proto2.clone()
+    assert proto.field == proto2.field == proto3.field
+    assert proto != proto2 != proto3
+
+def test_ConcreteProto2():
     point = namedtuple('Point', 'x y')
-    prototype = ConcreteProto()
-    
+    proto = prototype.ConcreteProto2()
+
     id1 = 'Point'
     id2 = 'CP-1'
     id3 = 'CP-2'
     id4 = 'CP-3'
 
-    prototype.register(id1, point)
-    assert id1 in prototype.objects
+    proto.register(id1, point)
+    assert id1 in proto.objects
 
-    prototype.register(id2, prototype)
-    assert id2 in prototype.objects
+    proto.register(id2, proto)
+    assert id2 in proto.objects
 
     for key in (id3, id4):
-        prototype.register(key, prototype.clone(id2))
+        proto.register(key, proto.clone(id2))
 
-    assert prototype.objects[id2] != prototype.objects[id3] != prototype.objects[id4]
-    assert '' not in prototype.objects
-    
+    assert proto.objects[id2] != proto.objects[id3] != proto.objects[id4]
+    assert '' not in proto.objects
+
     for key in (id1, id2, id3, id4):
-        prototype.unregister(key)
-        assert key not in prototype.objects
+        proto.unregister(key)
+        assert key not in proto.objects
 
-    assert len(prototype.objects) == 0
+    assert len(proto.objects) == 0

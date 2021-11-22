@@ -1,13 +1,17 @@
+"pypatterns setup file"
+
 import os
 import re
 from setuptools import find_packages, setup
 
 
 def get_info(info_name):
-    p = "['\"]([^'\"]+)['\"]"
+    """Helper function to get infos from pypatterns.__init__.py file"""
 
-    with open(os.path.join('pypatterns', '__init__.py')) as f:
-        init = f.read()
+    p_str = "['\"]([^'\"]+)['\"]"
+
+    with open(os.path.join('pypatterns', '__init__.py'), encoding='utf-8') as file:
+        init = file.read()
     
     # p2 = f"another pattern"
     # other_opts = []
@@ -19,8 +23,8 @@ def get_info(info_name):
     #     return re.search(f"{info_name} = {p}", init).group(1)
 
     return(
-        re.search(p, init).group(1) if info_name == '__doc__' 
-        else re.search(f"{info_name} = {p}", init).group(1)
+        re.search(p_str, init).group(1) if info_name == '__doc__' 
+        else re.search(f"{info_name} = {p_str}", init).group(1)
     )
 
 setup(
