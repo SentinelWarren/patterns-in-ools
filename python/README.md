@@ -18,7 +18,7 @@
 * [ ] [Template Method](https://github.com/SentinelWarren/patterns-in-ools/tree/main/pypatterns/behavioral/template_method.ipynb)
 * [ ] [Visitor](https://github.com/SentinelWarren/patterns-in-ools/tree/main/pypatterns/behavioral/visitor.ipynb)
 
-### Creational
+### Creational Patterns
 
 * [ ] [Abstract Factory](https://github.com/SentinelWarren/patterns-in-ools/tree/main/pypatterns/creational/abstract_factory.ipynb)
 * [ ] [Builder](https://github.com/SentinelWarren/patterns-in-ools/tree/main/pypatterns/creational/builder.ipynb)
