@@ -13,17 +13,25 @@ __author_email__ = 'warrenkalolo@gmail.com'
 __license__ = 'MIT'
 __copyright__ = 'Copyright (c) 2021 SentinelWarren'
 
-__all__ = (
-    'Singleton',
-    'FooTone',
-    'Logger',
-    'Prototype',
-    'ConcreteProto',
-    'RTS',
-)
+__all__ = [
+    'singleton',
+    'logging',
+    'prototype',
+    'rts',
+]
 
-from .creational.singleton import Singleton, FooTone
-from .examples.logger import Logger
+# __all__ = [
+    #     'Singleton',
+    #     'FooTone',
+    #     'Logger',
+    #     'IPrototype',
+    #     'IPrototype2',
+    #     'ConcreteProto',
+    #     'ConcreteProto2',
+    #     'RTS',
+    # ]
 
-from .creational.prototype import Prototype, ConcreteProto
-from .examples.rts import RTS
+from .creational import singleton
+from .creational import prototype
+
+from .examples.creational import logging, rts
