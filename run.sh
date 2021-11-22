@@ -1,32 +1,32 @@
 #!/bin/bash
 start=`date +%s`
 
-printf "\nRunning the Python version : \n"
-pytest pytthon
+printf "\nRunning Python  version tests : \n"
+pytest python
 
-# printf "\nRunning the Ruby version : \n"
+# printf "\nRunning Ruby  version tests : \n"
 
-# printf "\nRunning the Java version : \n"
+# printf "\nRunning Java  version tests : \n"
 
-# printf "\nRunning the JavaScript version : \n"
+# printf "\nRunning JavaScript  version tests : \n"
 
-# printf "\nRunning the PHP version : \n"
+# printf "\nRunning PHP  version tests : \n"
 
-# printf "\nRunning the Scala version : \n"
+# printf "\nRunning Scala  version tests : \n"
 
-# printf "\nRunning the C++ version : \n"
+# printf "\nRunning C++  version tests : \n"
 
-# printf "\nRunning the Go version : \n"
+# printf "\nRunning Go  version tests : \n"
 
-# printf "\nRunning the C# version : \n"
+# printf "\nRunning C#  version tests : \n"
 
-# printf "\nRunning the Kotlin version : \n"
+# printf "\nRunning Kotlin  version tests : \n"
 
-# printf "\nRunning the Dart Version : \n"
+# printf "\nRunning Dart  version tests : \n"
 
-# printf "\nRunning the TypeScript version : \n"
+# printf "\nRunning TypeScript  version tests : \n"
 
-# printf "\nRunning the Swift version : \n"
+# printf "\nRunning Swift  version tests : \n"
 
 end=`date +%s`
 runtime=$((end-start))

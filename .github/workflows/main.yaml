@@ -22,7 +22,7 @@ jobs:
         pip3 install -U virtualenv
         python3 -m virtualenv venv
         source venv/bin/activate
-        pip install pytest
+        pip3 install pytest
 
     # # set up scala
     # - name: install scala
