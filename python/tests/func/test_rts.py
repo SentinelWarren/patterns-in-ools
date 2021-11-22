@@ -1,4 +1,4 @@
-from pypatterns import RTS
+from pypatterns import rts
 
 def test_rts():
     pass
