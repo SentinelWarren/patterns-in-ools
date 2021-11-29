@@ -17,12 +17,8 @@ jobs:
     - name: update packages
       run: sudo apt update
 
-    - name: install virtualenv & pytest
-      run: |
-        pip3 install -U virtualenv
-        python3 -m virtualenv venv
-        source venv/bin/activate
-        pip3 install pytest
+    - name: install pytest
+      run: python3 -m pip install pytest
 
     # # set up scala
     # - name: install scala
